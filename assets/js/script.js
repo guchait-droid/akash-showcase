@@ -1,4 +1,5 @@
-var timeDisplay = document.getElementById("time");
+
+var timeDisplay = document.getElementById("time2");
 
 function refreshTime() {
   var date = new Date();
@@ -339,29 +340,68 @@ gsap.to(".about3__image img", {
   ease: "power4.easeout",
 });
 
-
-array.forEach(element => {
-  
+gsap.from(".faq__heading h2", {
+  y: 100,
+  opacity: 0,
+  duration: 1.2,
+  stagger: 0.5,
+  ease: "power4.easeIn",
+  scrollTrigger: {
+    trigger: ".faq__heading h2", 
+    start: "top 80%", 
+    toggleActions: "play none none none",
+  },
 });
-var modal = document.querySelector(".modal");
-var trigger = document.querySelector(".trigger");
-var closeButton = document.querySelector(".close-button");
-
-function toggleModal() {
-    modal.classList.toggle("show-modal");
-}
-
-function windowOnClick(event) {
-    if (event.target === modal) {
-        toggleModal();
-    }
-}
-
-trigger.addEventListener("click", toggleModal);
-closeButton.addEventListener("click", toggleModal);
-window.addEventListener("click", windowOnClick);
 
 
+gsap.from(".accordion-item", {
+  y: 150,
+  opacity: 0,
+  duration: 1.2,
+  stagger: 0.5,
+  ease: "power4.easeIn",
+  scrollTrigger: {
+    trigger: ".accordion-item", 
+    start: "top 80%", 
+    toggleActions: "play none none none",
+  },
+})
 
+gsap.from(".contact__heading h2 span", {
+  y: 100,
+  opacity: 0,
+  duration: 1.2,
+  stagger: 0.5,
+  ease: "power4.easeIn",
+  scrollTrigger: {
+    trigger: ".contact__heading h2 span", 
+    start: "top 80%", 
+    toggleActions: "play none none none",
+  },
+});
 
+gsap.from(".contact__button", {
+  y: 100,
+  opacity: 0,
+  duration: 1.2,
+  stagger: 0.5,
+  ease: "power4.easeIn",
+  scrollTrigger: {
+    trigger: ".contact__button", 
+    start: "top 80%", 
+    toggleActions: "play none none none",
+  },
+});
 
+gsap.from(".contact__image", {
+  y: 100,
+  opacity: 0,
+  duration: 1.2,
+  stagger: 0.5,
+  ease: "power4.easeIn",
+  scrollTrigger: {
+    trigger: ".contact__image", 
+    start: "top 80%", 
+    toggleActions: "play none none none",
+  },
+});

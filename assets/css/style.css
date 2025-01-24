@@ -166,6 +166,19 @@ body{
     transition: color 0.3s ease;
 }
 
+.top__header{
+    display: none;
+}
+
+.top__header2{
+    display: block;
+}
+
+.header__contents{
+    display: flex;
+    justify-content: space-between;
+}
+
 
 /* portfolio__banner */
 
@@ -391,7 +404,7 @@ body{
     padding-top: 0px;
 }
 
-.portfolio__marquee ul{
+.portfolio__marquee ul {
     display: inline-flex;
     gap: 30px;
     list-style: none;
@@ -418,6 +431,7 @@ body{
     background-color: var(--card-background);
     border-radius: 10px;
     /* box-shadow: inset -5px -5px 10px 0px rgba(255, 255, 255, 0.274), inset 5px 5px 10px 0px rgba(77, 77, 77, 0.3); */
+    
 }
 
 .marquee__logo img{
@@ -574,6 +588,11 @@ body{
 }
 
 /* motivation */
+
+.portfolio__motivation2{
+    display: none;
+
+}
 
 .motivation__heading h2{
     color: var(--white);
