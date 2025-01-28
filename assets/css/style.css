@@ -918,6 +918,7 @@ object-fit: cover;
 .footer__copyright {
     display: flex;
     justify-content: space-between;
+    align-items: baseline;
 }
 
 .footer__copyright a{
