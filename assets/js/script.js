@@ -33,6 +33,8 @@ tl.from(".portfolio__name h1 span", {
     ease: "power4.easeout" 
 });
 
+
+
 gsap.registerPlugin(ScrollTrigger);
 
 gsap.to(".portfolio__image img", {
@@ -63,80 +65,104 @@ gsap.from(".works__heading h1 span", {
 
 
 
-gsap.from(".work1" ,{
-  opacity: 0, 
-  x: -1000,
-  duration: 1.5,
-  ease: "power4.easein",
-  scrollTrigger: {
-    trigger: ".work1", 
-    start: "top 80%", 
-    toggleActions: "play none none none",
-  },
+let mm = gsap.matchMedia();
 
-})
-gsap.from(".work2" ,{
-  opacity: 0, 
-  x: 1000,
-  duration: 1.5, 
-  ease: "power4.easein",
-  scrollTrigger: {
-    trigger: ".work2", 
-    start: "top 80%", 
-    toggleActions: "play none none none",
-  },
+mm.add("(min-width: 768px)", () => {
+  gsap.from(".work1", {
+    opacity: 0, 
+    x: -1000,
+    duration: 1.5,
+    ease: "power4.easein",
+    scrollTrigger: {
+      trigger: ".work1", 
+      start: "top 80%", 
+      toggleActions: "play none none none",
+    }
+  });
+});
 
-})
 
-gsap.from(".work3" ,{
-  opacity: 0, 
-  x: -1000,
-  duration: 1.5, 
-  ease: "power4.easein",
-  scrollTrigger: {
-    trigger: ".work3", 
-    start: "top 80%", 
-    toggleActions: "play none none none",
-  },
+let mm1 = gsap.matchMedia();
 
-})
-gsap.from(".work4" ,{
-  opacity: 0, 
-  x: 1000,
-  duration: 1.5, 
-  ease: "power4.easein",
-  scrollTrigger: {
-    trigger: ".work4", 
-    start: "top 80%", 
-    toggleActions: "play none none none",
-  },
+mm1.add("(min-width: 768px)", () => {
+  gsap.from(".work2", {
+    opacity: 0, 
+    x: -1000,
+    duration: 1.5,
+    ease: "power4.easein",
+    scrollTrigger: {
+      trigger: ".work2", 
+      start: "top 80%", 
+      toggleActions: "play none none none",
+    }
+  });
+});
 
-})
+let mm2 = gsap.matchMedia();
 
-gsap.from(".work5" ,{
-  opacity: 0, 
-  x: -1000,
-  duration: 1.5,
-  ease: "power4.easein",
-  scrollTrigger: {
-    trigger: ".work5", 
-    start: "top 80%", 
-    toggleActions: "play none none none",
-  },
+mm2.add("(min-width: 768px)", () => {
+  gsap.from(".work3", {
+    opacity: 0, 
+    x: -1000,
+    duration: 1.5,
+    ease: "power4.easein",
+    scrollTrigger: {
+      trigger: ".work3", 
+      start: "top 80%", 
+      toggleActions: "play none none none",
+    }
+  });
+});
 
-})
-gsap.from(".work6" ,{
-  opacity: 0, 
-  x: 1000,
-  duration: 1.5,
-  ease: "power4.easein",
-  scrollTrigger: {
-    trigger: ".work6", 
-    start: "top 80%", 
-    toggleActions: "play none none none",
-  },
 
-})
+let mm4 = gsap.matchMedia();
+
+mm4.add("(min-width: 768px)", () => {
+  gsap.from(".work4", {
+    opacity: 0, 
+    x: -1000,
+    duration: 1.5,
+    ease: "power4.easein",
+    scrollTrigger: {
+      trigger: ".work4", 
+      start: "top 80%", 
+      toggleActions: "play none none none",
+    }
+  });
+});
+
+let mm5 = gsap.matchMedia();
+
+mm5.add("(min-width: 768px)", () => {
+  gsap.from(".work5", {
+    opacity: 0, 
+    x: -1000,
+    duration: 1.5,
+    ease: "power4.easein",
+    scrollTrigger: {
+      trigger: ".work5", 
+      start: "top 80%", 
+      toggleActions: "play none none none",
+    }
+  });
+});
+
+
+let mm6 = gsap.matchMedia();
+
+mm6.add("(min-width: 768px)", () => {
+  gsap.from(".work6", {
+    opacity: 0, 
+    x: -1000,
+    duration: 1.5,
+    ease: "power4.easein",
+    scrollTrigger: {
+      trigger: ".work6", 
+      start: "top 80%", 
+      toggleActions: "play none none none",
+    }
+  });
+});
 
 
 gsap.registerPlugin(ScrollTrigger);

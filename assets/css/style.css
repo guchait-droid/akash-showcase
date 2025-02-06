@@ -60,7 +60,7 @@ font-family: var(--main-font);
   
 body{
     background-color: var(--black);
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 .pad-Y{
