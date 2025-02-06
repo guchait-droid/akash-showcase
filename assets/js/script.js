@@ -67,8 +67,8 @@ gsap.from(".works__heading h1 span", {
 
 let mm = gsap.matchMedia();
 
-mm.add("(min-width: 768px)", () => {
-  gsap.from(".work1", {
+mm.add("(min-width: 768px)", (context) => {
+  let animation = gsap.from(".work1", {
     opacity: 0, 
     x: -1000,
     duration: 1.5,
@@ -79,7 +79,13 @@ mm.add("(min-width: 768px)", () => {
       toggleActions: "play none none none",
     }
   });
+
+
+  return () => {
+    animation.revert(); 
+  };
 });
+
 
 
 let mm1 = gsap.matchMedia();
@@ -96,6 +102,9 @@ mm1.add("(min-width: 768px)", () => {
       toggleActions: "play none none none",
     }
   });
+  return () => {
+    animation.revert(); 
+  };
 });
 
 let mm2 = gsap.matchMedia();
@@ -112,6 +121,9 @@ mm2.add("(min-width: 768px)", () => {
       toggleActions: "play none none none",
     }
   });
+  return () => {
+    animation.revert(); 
+  };
 });
 
 
@@ -129,6 +141,9 @@ mm4.add("(min-width: 768px)", () => {
       toggleActions: "play none none none",
     }
   });
+  return () => {
+    animation.revert(); 
+  };
 });
 
 let mm5 = gsap.matchMedia();
@@ -145,6 +160,9 @@ mm5.add("(min-width: 768px)", () => {
       toggleActions: "play none none none",
     }
   });
+  return () => {
+    animation.revert(); 
+  };
 });
 
 
@@ -162,6 +180,9 @@ mm6.add("(min-width: 768px)", () => {
       toggleActions: "play none none none",
     }
   });
+  return () => {
+    animation.revert(); 
+  };
 });
 
 
