@@ -87,7 +87,7 @@ let mm1 = gsap.matchMedia();
 mm1.add("(min-width: 768px)", () => {
   gsap.from(".work2", {
     opacity: 0, 
-    x: -1000,
+    x: 1000,
     duration: 1.5,
     ease: "power4.easein",
     scrollTrigger: {
@@ -120,7 +120,7 @@ let mm4 = gsap.matchMedia();
 mm4.add("(min-width: 768px)", () => {
   gsap.from(".work4", {
     opacity: 0, 
-    x: -1000,
+    x: 1000,
     duration: 1.5,
     ease: "power4.easein",
     scrollTrigger: {
@@ -153,7 +153,7 @@ let mm6 = gsap.matchMedia();
 mm6.add("(min-width: 768px)", () => {
   gsap.from(".work6", {
     opacity: 0, 
-    x: -1000,
+    x: 1000,
     duration: 1.5,
     ease: "power4.easein",
     scrollTrigger: {
