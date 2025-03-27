@@ -58,10 +58,8 @@ font-family: var(--main-font);
     scroll-behavior: auto !important;
   }
   
-html,body{
+body{
     background-color: var(--black);
-    overflow-x: scroll;
-    height: auto;
     overflow: hidden;
 }
 
