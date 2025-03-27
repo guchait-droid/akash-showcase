@@ -27,7 +27,7 @@ function setupGSAPAnimations() {
   ScrollTrigger.getAll().forEach(trigger => trigger.kill());
   gsap.globalTimeline.clear();
  
-  if (window.innerWidth > 991) {
+  if (window.innerWidth > 1024) {
  
     const tl = gsap.timeline();
 
@@ -45,12 +45,14 @@ function setupGSAPAnimations() {
     
     gsap.to(".portfolio__image img", {
       scrollTrigger: {
-        trigger: ".portfolio__image", 
-        scrub: 0.5, 
+        trigger: ".portfolio__image",
+        scrub: 0.5,
+        
       },
-      scale: 1.5,
+      scale: window.innerWidth > 1024 ? 1.5 : 1.2, // Reduce scale on mobile
       ease: "power4.easeout",
     });
+    
     
     
     
@@ -180,6 +182,15 @@ function setupGSAPAnimations() {
         pin: true,                                 
       }
     });
+
+    // ScrollTrigger.create({
+    //   trigger: ".portfolio__about",
+    //   start: "top top",
+    //   end: "bottom top",
+    //   scrub: 5,
+    //   pin: window.innerWidth > 1024,  // Disable pin on smaller screens
+    // });
+    
     
     
     aboutTimeline.to(".about__heading", {
@@ -426,15 +437,13 @@ setupGSAPAnimations();
 window.addEventListener("resize", setupGSAPAnimations);
 
 const lenis = new Lenis({
-  smooth: true,
-  lerp: 0.05,
-  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-  smoothTouch: true,
-});
-
-lenis.on('scroll', (e) => {
-  console.log('Scrolling:', e);
-  
+  smooth: true, 
+  smoothTouch: true,  // Ensure smooth scrolling on touch devices
+  lerp: 0.09,         // Higher value = smoother motion (default is 0.1)
+  easing: (t) => 1 - Math.pow(1 - t, 4), // Smooth cubic easing
+  duration: 1.2,      // Increase scroll duration for ultra-smooth feel
+  wheelMultiplier: 0.8, // Adjust scroll sensitivity
+  touchMultiplier: 1.5, // Adjust touch scrolling sensitivity
 });
 
 function raf(time) {
@@ -443,3 +452,4 @@ function raf(time) {
 }
 
 requestAnimationFrame(raf);
+
