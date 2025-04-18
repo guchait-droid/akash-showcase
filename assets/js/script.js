@@ -413,7 +413,7 @@ gsap.from(".contact__image", {
 const lenis = new Lenis({
   smooth: true,
   lerp: 0.05,
-  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  // easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
   smoothTouch: true,
 });
 
