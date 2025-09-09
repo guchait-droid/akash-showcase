@@ -431,6 +431,7 @@
 
 
 
+// Time Display Functionality
 var timeDisplay = document.getElementById("time2");
 
 function refreshTime() {
@@ -440,161 +441,22 @@ function refreshTime() {
     hour: "2-digit",
     minute: "2-digit",
     second: "2-digit",
-    hour12: true, 
+    hour12: true,
   };
   var timeString = date.toLocaleTimeString("en-US", options);
   timeString = timeString.replace(/ AM| PM/g, "");
   timeDisplay.innerHTML = timeString;
 }
-
 setInterval(refreshTime, 1000);
 
-// Only run GSAP + Lenis for desktop
-if (window.matchMedia("(min-width: 1024px)").matches) {
-  // GSAP Animations
-  const tl = gsap.timeline();
 
-  tl.from(".portfolio__name h1 span", {
-    y: -150,
-    opacity: 0,
-    duration: 1,
-    stagger: 0.5,
-    ease: "power4.easeOut"
-  });
+// Check if device is desktop (1024px and up)
+const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
 
-  gsap.to(".portfolio__image img", {
-    scrollTrigger: {
-      trigger: ".portfolio__image", 
-      scrub: 0.5
-    },
-    scale: 1.5,
-    ease: "power4.easeOut"
-  });
-
-  gsap.from(".works__heading h1 span", {
-    y: 150,
-    opacity: 0,
-    duration: 1.2,
-    stagger: 0.5,
-    ease: "power4.easeIn",
-    scrollTrigger: {
-      trigger: ".works__heading h1 span", 
-      start: "top 80%", 
-      toggleActions: "play none none none",
-    },
-  });
-
-  const workAnimations = [
-    ".work1", ".work2", ".work3", ".work4", ".work5", ".work6"
-  ];
-
-  workAnimations.forEach((selector, index) => {
-    let xValue = index % 2 === 0 ? -1000 : 1000;
-    gsap.from(selector, {
-      opacity: 0,
-      x: xValue,
-      duration: 1.5,
-      ease: "power4.easeIn",
-      scrollTrigger: {
-        trigger: selector,
-        start: "top 80%",
-        toggleActions: "play none none none"
-      }
-    });
-  });
-
-  const aboutTimeline = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".portfolio__about",
-      start: "top top",
-      end: "bottom top",
-      scrub: 5,
-      pin: true
-    }
-  });
-
-  aboutTimeline.to(".about__heading", {
-    opacity: 0,
-    scale: 0.5,
-    duration: 1,
-    ease: "power4.out",
-  }, 0);
-
-  aboutTimeline.fromTo(".about__image", {
-    opacity: 0,
-    scale: 2
-  }, {
-    opacity: 1,
-    scale: 1,
-    duration: 1,
-    ease: "power4.out",
-  }, 0.5);
-
-  const scrollElements = [
-    ".cta_content h3", ".cta_content p", ".btn2",
-    ".expertise__heading h1 span", ".expertise1",
-    ".motivation__heading", ".motivation__para p", ".motivation__signature img",
-    ".faq__heading h2", ".accordion-item",
-    ".contact__heading h2 span", ".contact__button", ".contact__image"
-  ];
-
-  scrollElements.forEach((selector) => {
-    gsap.from(selector, {
-      y: 100,
-      opacity: 0,
-      duration: 1.2,
-      stagger: 0.5,
-      ease: "power4.easeIn",
-      scrollTrigger: {
-        trigger: selector,
-        start: "top 80%",
-        toggleActions: "play none none none"
-      }
-    });
-  });
-
-  gsap.to(".about2__image img", {
-    scrollTrigger: {
-      trigger: ".about2__image",
-      scrub: 0.5
-    },
-    scale: 1.5,
-    ease: "power4.easeOut"
-  });
-
-  gsap.to(".about3__image img", {
-    scrollTrigger: {
-      trigger: ".about3__image",
-      scrub: 0.5
-    },
-    scale: 1.5,
-    ease: "power4.easeOut"
-  });
-
-  gsap.to(".experience__list", {
-    scrollTrigger: {
-      trigger: ".portfolio__experience",
-      start: "top top",
-      end: "bottom bottom",
-      pin: ".motivation__heading",
-      pinSpacing: true,
-      scrub: 1
-    }
-  });
-
-  ScrollTrigger.create({
-    trigger: ".experience__list",
-    start: "top top",
-    end: "bottom bottom",
-    pin: ".motivation__heading",
-    scrub: 1
-  });
-
-
-}
-
-  // Lenis Smooth Scroll
-  const lenis = new Lenis({
+// Lenis initialization only on desktop
+let lenis;
+if (isDesktop) {
+  lenis = new Lenis({
     smooth: true,
     lerp: 0.05,
     smoothTouch: true
@@ -604,5 +466,159 @@ if (window.matchMedia("(min-width: 1024px)").matches) {
     lenis.raf(time);
     requestAnimationFrame(raf);
   }
-
   requestAnimationFrame(raf);
+} else {
+  console.log("Lenis smooth scroll disabled on mobile");
+}
+
+
+// GSAP Animations only for desktop
+function initAnimations() {
+  if (isDesktop) {
+    const tl = gsap.timeline();
+    tl.from(".portfolio__name h1 span", {
+      y: -150,
+      opacity: 0,
+      duration: 1,
+      stagger: 0.5,
+      ease: "power4.easeOut"
+    });
+
+    gsap.to(".portfolio__image img", {
+      scrollTrigger: {
+        trigger: ".portfolio__image",
+        scrub: 0.5
+      },
+      scale: 1.5,
+      ease: "power4.easeOut"
+    });
+
+    gsap.from(".works__heading h1 span", {
+      y: 150,
+      opacity: 0,
+      duration: 1.2,
+      stagger: 0.5,
+      ease: "power4.easeIn",
+      scrollTrigger: {
+        trigger: ".works__heading h1 span",
+        start: "top 80%",
+        toggleActions: "play none none none",
+      }
+    });
+
+    const workAnimations = [
+      ".work1", ".work2", ".work3", ".work4", ".work5", ".work6"
+    ];
+    workAnimations.forEach((selector, index) => {
+      let xValue = index % 2 === 0 ? -1000 : 1000;
+      gsap.from(selector, {
+        opacity: 0,
+        x: xValue,
+        duration: 1.5,
+        ease: "power4.easeIn",
+        scrollTrigger: {
+          trigger: selector,
+          start: "top 80%",
+          toggleActions: "play none none none"
+        }
+      });
+    });
+
+    const aboutTimeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".portfolio__about",
+        start: "top top",
+        end: "bottom top",
+        scrub: 5,
+        pin: true
+      }
+    });
+    aboutTimeline.to(".about__heading", {
+      opacity: 0,
+      scale: 0.5,
+      duration: 1,
+      ease: "power4.out"
+    }, 0);
+    aboutTimeline.fromTo(".about__image", {
+      opacity: 0,
+      scale: 2
+    }, {
+      opacity: 1,
+      scale: 1,
+      duration: 1,
+      ease: "power4.out"
+    }, 0.5);
+
+    const scrollElements = [
+      ".cta_content h3", ".cta_content p", ".btn2",
+      ".expertise__heading h1 span", ".expertise1",
+      ".motivation__heading", ".motivation__para p", ".motivation__signature img",
+      ".faq__heading h2", ".accordion-item",
+      ".contact__heading h2 span", ".contact__button", ".contact__image"
+    ];
+    scrollElements.forEach((selector) => {
+      gsap.from(selector, {
+        y: 100,
+        opacity: 0,
+        duration: 1.2,
+        stagger: 0.5,
+        ease: "power4.easeIn",
+        scrollTrigger: {
+          trigger: selector,
+          start: "top 80%",
+          toggleActions: "play none none none"
+        }
+      });
+    });
+
+    gsap.to(".about2__image img", {
+      scrollTrigger: {
+        trigger: ".about2__image",
+        scrub: 0.5
+      },
+      scale: 1.5,
+      ease: "power4.easeOut"
+    });
+
+    gsap.to(".about3__image img", {
+      scrollTrigger: {
+        trigger: ".about3__image",
+        scrub: 0.5
+      },
+      scale: 1.5,
+      ease: "power4.easeOut"
+    });
+
+    gsap.to(".experience__list", {
+      scrollTrigger: {
+        trigger: ".portfolio__experience",
+        start: "top top",
+        end: "bottom bottom",
+        pin: ".motivation__heading",
+        pinSpacing: true,
+        scrub: 1
+      }
+    });
+
+    ScrollTrigger.create({
+      trigger: ".experience__list",
+      start: "top top",
+      end: "bottom bottom",
+      pin: ".motivation__heading",
+      scrub: 1
+    });
+
+  } else {
+    // Mobile – animations disabled
+    ScrollTrigger.getAll().forEach(st => st.kill());
+    console.log("Animations disabled on mobile");
+  }
+}
+
+// Initialize animations
+initAnimations();
+
+// Re-check on resize
+window.addEventListener("resize", () => {
+  location.reload(); // Or handle dynamically if preferred
+});
