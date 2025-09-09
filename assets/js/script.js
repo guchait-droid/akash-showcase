@@ -150,3 +150,23 @@ gsap.from(".footer__links", {
     invalidateOnRefresh: true,
   }
 });
+
+
+  function isMobile() {
+            return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        }
+
+        window.addEventListener("load", function() {
+            if (!isMobile()) {
+                // Mobile না হলে animation চালাও
+                gsap.to(".your-element", {
+                    x: 300,
+                    duration: 3,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: "power1.inOut"
+                });
+            } else {
+                console.log("GSAP animation disabled on mobile.");
+            }
+        });
