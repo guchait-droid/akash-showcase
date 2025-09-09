@@ -469,6 +469,9 @@ if (isDesktop) {
   requestAnimationFrame(raf);
 } else {
   console.log("Lenis smooth scroll disabled on mobile");
+  // Ensure normal scroll works on mobile
+  document.documentElement.style.overflow = "auto";
+  document.body.style.overflow = "auto";
 }
 
 
@@ -600,18 +603,12 @@ function initAnimations() {
       }
     });
 
-    ScrollTrigger.create({
-      trigger: ".experience__list",
-      start: "top top",
-      end: "bottom bottom",
-      pin: ".motivation__heading",
-      scrub: 1
-    });
-
   } else {
-    // Mobile – animations disabled
+    // Mobile – animations disabled, ensure scroll works
     ScrollTrigger.getAll().forEach(st => st.kill());
-    console.log("Animations disabled on mobile");
+    document.documentElement.style.overflow = "auto";
+    document.body.style.overflow = "auto";
+    console.log("Animations disabled on mobile, normal scroll enabled");
   }
 }
 
@@ -620,5 +617,5 @@ initAnimations();
 
 // Re-check on resize
 window.addEventListener("resize", () => {
-  location.reload(); // Or handle dynamically if preferred
+  location.reload(); // or implement smarter update
 });
