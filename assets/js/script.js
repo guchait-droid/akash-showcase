@@ -465,7 +465,12 @@ mm.add({
       opacity: 0,
       duration: 1,
       stagger: 0.5,
-      ease: "power4.out"
+      ease: "power4.out",
+      scrollTrigger: {
+        trigger: ".portfolio__name",
+        start: "top 80%",
+        toggleActions: "play none none none"
+      }
     });
 
     // Portfolio images zoom
@@ -612,10 +617,10 @@ mm.add({
   }
 });
 
-// Lenis smooth scroll (same as before)
+// Lenis smooth scroll
 const lenis = new Lenis({ smooth: true, lerp: 0.05, smoothTouch: true });
-
 lenis.on("scroll", (e) => { console.log("Scrolling:", e); });
 
 function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
 requestAnimationFrame(raf);
+
