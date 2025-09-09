@@ -590,6 +590,9 @@ if (window.matchMedia("(min-width: 1024px)").matches) {
     scrub: 1
   });
 
+
+}
+
   // Lenis Smooth Scroll
   const lenis = new Lenis({
     smooth: true,
@@ -603,5 +606,3 @@ if (window.matchMedia("(min-width: 1024px)").matches) {
   }
 
   requestAnimationFrame(raf);
-}
-
